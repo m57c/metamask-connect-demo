@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "http-server"
+    "serve": "http-server",
+    "dev": "parcel serve index.html",
+    "build": "parcel build index.html"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "http-server": "^14.1.0"
+    "eth-sig-util": "^3.0.1",
+    "ethereumjs-util": "^7.1.4",
+    "parcel-bundler": "^1.12.5"
   }
 }

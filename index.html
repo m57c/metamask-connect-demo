@@ -17,82 +17,8 @@
 <body>
   <div id="log"></div>
   <button id="connectButton" hidden=true>Conntect To MetaMask</button>
-  <script type="module">
-    let currentAccount = null;
-
-    const connectButton = document.getElementById("connectButton");
-
-    function sendToLog(msg) {
-      const log = document.getElementById("log");
-      log.innerHTML += (`${msg}</br>`);
-    }
-
-    function handleAccountsChnaged(accounts) {
-      if (accounts.length === 0) {
-        // MetaMask is locked or not connected
-        sendToLog("Please connect to MetaMask");
-        connectButton.hidden = false;
-      } else if (accounts[0] !== currentAccount) {
-        connectButton.hidden = true;
-        currentAccount = accounts[0];
-        sendToLog(`Connected to account: ${currentAccount}`);
-      }
-    }
-
-    function connect() {
-      ethereum
-        .request({ method: 'eth_requestAccounts' })
-        .then(handleAccountsChnaged)
-        .catch((err) => {
-          if (err.code === 4001) {
-            // User rejected the request
-            sendToLog("User rejected request to connect");
-          } else {
-            console.error(err);
-          }
-         });
-     }
-     connectButton.addEventListener('click', connect);
-
-    /** 
-     * Detect the provider
-     * MetaMask injects window.ethereum into the site. 
-     * You can detect if the provider is metamask with ethereum.isMetaMask. 
-     * Full implemenation of this step is here: https://github.com/MetaMask/detect-provider/blob/main/src/index.ts
-     **/
-    if (window.ethereum) {
-      sendToLog("Provider Detected");
-      
-      const { ethereum } = window;
-
-      if (ethereum.isMetaMask) {
-        sendToLog("Provider is MetaMask");
-      } else {
-        sendToLog("Provider is Not MetaMask");
-      }
-
-      /**
-       * Detect chain the user is connected to and detect when user switches chains.
-       **/
-      const chainId = await ethereum.request({ method: 'eth_chainId' });
-      sendToLog(`Chain ID: ${chainId}`)
-
-      //Reload the page if the chain changes
-      ethereum.on('chainChanged', (_chainId) => {window.location.reload()});
-
-      /**
-       * Detect connected account and when the user changes accounts
-       **/
-       ethereum
-        .request({ method: 'eth_accounts' })
-        .then(handleAccountsChnaged)
-        .catch((err) => {
-          console.error(err);
-         });
-    } else {
-      sendToLog("Provider not detected");
-    }
-  </script>
+  <button id="signButton" hidden=true>Sign Transaction</button>
+  <script src="index.js"></script>
 </body>
 
 </html>
