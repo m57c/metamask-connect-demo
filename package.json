@@ -2,15 +2,14 @@
   "name": "metamask-connect-demo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "dev": "npm-run-all --parallel 'watch:*'",
-    "build": "parcel build index.html",
-    "watch:start": "parcel serve src/index.html",
-    "watch:css": "tailwindcss -i src/style.css -o src/assets/tailwindcss.css -w"
+    "build": "tailwindcss -i style.css -o assets/tailwindcss.css && parcel build index.html",
+    "watch:start": "parcel serve index.html",
+    "watch:css": "tailwindcss -i style.css -o assets/tailwindcss.css -w"
   },
-  "author": "",
+  "author": "m57c",
   "license": "MIT",
   "devDependencies": {
     "assert": "^2.0.0",
