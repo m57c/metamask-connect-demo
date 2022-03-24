@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "dev": "npm-run-all --parallel 'watch:*'",
-    "build": "tailwindcss -i style.css -o assets/tailwindcss.css && parcel build index.html",
+    "build": "tailwindcss -i style.css -o assets/tailwindcss.css && parcel build index.html --public-url ./",
     "watch:start": "parcel serve index.html",
     "watch:css": "tailwindcss -i style.css -o assets/tailwindcss.css -w"
   },
