@@ -8,7 +8,7 @@ The flow has 4 steps:
 1. Detect the Ethereum provider
 2. Detect the network the user is connected to
 3. Get the user's account id
-4. Request a signature to prove ownership of the account
+4. Sign a message to prove ownership of the account
 
 ## Development
 

@@ -4,7 +4,7 @@
  * 1. Detect the provider
  * 2. Detect the chain the user is connected to
  * 3. Get the user's acount address
- * 4. Sign a message to prove ownership of account
+ * 4. Sign a message to prove ownership of the account
  **/
 
 import { bufferToHex } from 'ethereumjs-util';
@@ -76,7 +76,8 @@ function verifySignature(msg, sig) {
 /**
  * 1. Detect the provider
  * MetaMask injects window.ethereum into the site.
- * Full implemenation of this step is here: https://github.com/MetaMask/detect-provider/blob/main/src/index.ts
+ * A more complete implemenation of this step is here: 
+ * https://github.com/MetaMask/detect-provider/blob/main/src/index.ts
  **/
 if (window.ethereum) {
   sendToLog("Provider Detected");
@@ -120,7 +121,7 @@ if (window.ethereum) {
   });
 
   /**
-   * 4. Sign mesage to prove ownership of account
+   * 4. Sign a mesage to prove ownership of the account
    **/
   signButton.addEventListener('click', () => {
     if (currentAccount !== null) {
